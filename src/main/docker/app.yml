@@ -1,0 +1,14 @@
+version: '2'
+services:
+    3scalewebhookapplication-app:
+        image: 3scalewebhookapplication
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://3scalewebhookapplication-mysql:3306/3scalewebhookapplication?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    3scalewebhookapplication-mysql:
+        extends:
+            file: mysql.yml
+            service: 3scalewebhookapplication-mysql
